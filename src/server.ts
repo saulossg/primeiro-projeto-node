@@ -1,7 +1,9 @@
 import express from 'express';
 import routes from './routes';
+import 'reflect-metadata';
 
 import './database';
+
 
 const server = express();
 const port = 3333;
