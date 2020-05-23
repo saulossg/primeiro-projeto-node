@@ -1,6 +1,7 @@
 import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
+import configAuth from '../config/auth';
 
 import User from '../models/User';
 
@@ -32,9 +33,11 @@ class AuthenticaUserService {
 
     delete user.password;
 
-    const token = sign({}, '88181fb72ce6bcaea828f57b3db3df19', {
+    const { secret, expiresIn } = configAuth.jwt;
+
+    const token = sign({}, secret, {
       subject: user.id,
-      expiresIn: '1d',
+      expiresIn,
     });
 
     return {
