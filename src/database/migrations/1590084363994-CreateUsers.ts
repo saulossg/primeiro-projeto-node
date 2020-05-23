@@ -15,6 +15,11 @@ export default class CreateUsers1590084363994 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           {
+            name: 'email',
+            type: 'varchar',
+            isUnique: true,
+          },
+          {
             name: 'name',
             type: 'varchar',
           },
@@ -25,6 +30,7 @@ export default class CreateUsers1590084363994 implements MigrationInterface {
           {
             name: 'date',
             type: 'timestamp with time zone',
+            default: 'now()',
             isUnique: true,
           },
           {
@@ -33,7 +39,7 @@ export default class CreateUsers1590084363994 implements MigrationInterface {
             default: 'now()',
           },
           {
-            name: 'update_at',
+            name: 'updated_at',
             type: 'timestamp',
             default: 'now()',
           },
